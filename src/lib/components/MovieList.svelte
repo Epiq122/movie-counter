@@ -3,17 +3,20 @@
 	import MovieListItem from './MovieListItem.svelte';
 
 	let {
-		movies,
+		movies = [],
 		onToggleWatched,
 		onRemove
-	}: { movies: Movie[]; onToggleWatched: (id: string) => void; onRemove: (id: string) => void } =
-		$props();
-
+	}: {
+		movies?: Movie[];
+		onToggleWatched: (id: string) => void;
+		onRemove: (id: string) => void;
+	} = $props();
 	type FilterState = {
 		query: string;
 		status: 'all' | WatchStatus;
 	};
-	let filters = $state({
+
+	let filters = $state<FilterState>({
 		query: '',
 		status: 'all'
 	});
@@ -54,7 +57,10 @@
 					<span class="label-text text-sm">Status</span>
 					<select
 						value={filters.status}
-						onchange={(e) => (filters.status = (e.currentTarget as HTMLSelectElement).value)}
+						onchange={(e) => {
+							const value = (e.currentTarget as HTMLSelectElement).value;
+							filters.status = value === 'all' ? 'all' : (value as WatchStatus);
+						}}
 						class="select-bordered select select-sm"
 					>
 						<option value="all">All</option>

@@ -28,5 +28,4 @@
 			{@render children()}
 		{/if}
 	</main>
-	<MovieForm />
 </div>
