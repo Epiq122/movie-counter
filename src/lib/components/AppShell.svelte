@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import MovieForm from './MovieForm.svelte';
 
 	let {
 		children,
@@ -27,4 +28,5 @@
 			{@render children()}
 		{/if}
 	</main>
+	<MovieForm />
 </div>
