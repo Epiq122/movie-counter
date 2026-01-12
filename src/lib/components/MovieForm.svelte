@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { clampRating } from '$lib/utils/movie-math';
 	import { validateMovieForm } from '$lib/utils/movie-validation';
+	import MovieList from './MovieList.svelte';
 
 	let { onCreate }: { onCreate: (movie: { title: string; year: number; rating: number }) => void } =
 		$props();
@@ -135,3 +136,5 @@
 		</div>
 	</div>
 </form>
+
+<MovieList />
