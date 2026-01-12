@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { clampRating } from '$lib/utils/movie-math';
 	import { validateMovieForm } from '$lib/utils/movie-validation';
-	import MovieList from './MovieList.svelte';
 
-	let { onCreate }: { onCreate: (movie: { title: string; year: number; rating: number }) => void } =
-		$props();
+	let {
+		onCreate
+	}: { onCreate?: (movie: { title: string; year: number; rating: number }) => void } = $props();
 
 	let form = $state({
 		title: '',
@@ -24,6 +24,10 @@
 		touched.year = true;
 		touched.rating = true;
 
+		if (!onCreate) {
+			console.error('MovieForm: onCreate prop not provided');
+			return;
+		}
 		if (!isValid) return;
 
 		onCreate({
@@ -31,8 +35,14 @@
 			year: form.year,
 			rating: form.rating
 		});
+
 		form.title = '';
+		form.year = new Date().getFullYear();
 		form.rating = 3;
+
+		touched.title = false;
+		touched.year = false;
+		touched.rating = false;
 	}
 
 	function onYearInput(v: string) {
@@ -136,5 +146,3 @@
 		</div>
 	</div>
 </form>
-
-<MovieList />

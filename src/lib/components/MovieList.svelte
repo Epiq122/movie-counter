@@ -39,8 +39,8 @@
 	<div class="card-body gap-4">
 		<div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
 			<div>
-				<h2 class="care-title">Your Watchlist</h2>
-				<p class="opactity-70 text-sm">Search and filter like a normal app.</p>
+				<h2 class="card-title">Your Watchlist</h2>
+				<p class="text-sm opacity-70">Search and filter like a normal app.</p>
 			</div>
 
 			<div class="flex flex-col gap-2 sm:flex-row sm:items-center">
@@ -72,7 +72,7 @@
 		</div>
 
 		{#if filtered.length === 0}
-			<div class="text-cener rounded-xl border border-dashed border-base-300 p-6">
+			<div class="rounded-xl border border-dashed border-base-300 p-6 text-center">
 				<p class="font-medium">No matches</p>
 				<p class="text-sm opacity-70">Try changing fileters or adding a movie.</p>
 			</div>

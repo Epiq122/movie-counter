@@ -9,7 +9,7 @@
 		onToggleWatched: (id: string) => void;
 		onRemove: (id: string) => void;
 	} = $props();
-	let isWatched = $derived(movie.status === 'watched');
+	let isWatched = $derived.by(() => movie.status === 'watched');
 </script>
 
 <li
